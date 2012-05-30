@@ -10,6 +10,42 @@
 
 }
 
+
+.uppernav {
+  position: absolute;
+  top: 65px;
+  margin-left: 680px;
+}
+
+input, textarea, select, .uneditable-input {
+  width: 150px;
+  height: 12px;
+}
+
+.uppernav-item {
+  float: left;
+}
+
+.uppernav a {
+  color: #666666;
+  line-height: 27px;
+  padding-right: 1px;
+}
+
+.uppernav a:hover {
+  color: #999;
+  text-decoration: none;
+}
+
+.uppernav input[type="image"] {
+  margin: -7px 0 0 2px;
+}
+
+.uppernav input[type="text"] {
+  margin-left: 8px;
+}
+
+
 .header {
   height: 40px;
   background-color: #313030;
@@ -22,8 +58,7 @@
   padding: 20px 0 20px 0;
 }
 
-.iwcnav {
-  
+.iwcnav { 
   list-style: none;
   margin: 0px;
 }
