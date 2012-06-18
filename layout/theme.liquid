@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>
+      {% if template == "index" %} {{ shop.name | escape }} {% else %} {{ page_title | escape }} &ndash; {{ shop.name | escape }} {% endif %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
+    {{ 'main.css' | asset_url | stylesheet_tag }}
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    {{content_for_header}}
+  </head>
+
+  <body>
+    <div class="header">
+    </div>
+      
+    <div class="container {% if template == 'index' %} main {% else %} interior {% endif %}">
+      <div class="uppernav">
+        <div class="uppernav-item">
+          <a href="#">Contact.</a>
+          <a href="#">Cart.</a>
+        </div>
+        <div class="uppernav-item search">
+          <form action ="http://www.example.com/login.php">
+            <input type= "text" name="search" size="10" maxlength="100" />
+            <input type="image" src= "{{'search_icon.jpg' | asset_url }}" width= "25" height= "20">
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3 logo">
+          <a href="/"> <img src= "{{'logo.png' | asset_url }}"/> </a>
+        </div>
+        
+        <div class="span9">
+          <ul class="iwcnav">
+            {% for link in linklists.main-menu.links %}
+            <li class="dropdown {% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
+              {% assign child_list_handle = link.title | handleize %}
+              {% if linklists[child_list_handle].links != blank %}
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  {{ link.title | escape }} 
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  {% for childlink in linklists[child_list_handle].links %}
+                  <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% else %}
+                <a class="dropdown-toggle" href="{{ link.url }}">{{ link.title | escape }}</a>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>  
+      {% if template == 'index' %}
+      <div class="row">  
+        <div class="span12">
+          {% include 'carousel' %}
+        </div>
+      </div>
+          
+      {% endif %}
+
+      <!-- Example row of columns -->
+      <div class="row content">
+        <div class="span3 first">
+          {% include 'sidebar' %}
+        </div>
+        <div class="span9">
+          {% if template == 'list-collections' %}
+            {% include 'collection-listing' %}
+          {% else %}
+            {{ content_for_layout }}
+          {% endif %}
+        </div>
+      </div>
+
+      <hr>
+
+      <copywrightr>
+        <p>© Indiana Writers Center 2012</p>
+      </copywright>
+
+    </div> <!-- /container -->
+ 
+      <div class="footer">
+         <div class="container">
+           <div class="row">
+           <div class="span2">
+             <p> Be a Writer </p>
+             <p> Membership </p>
+           </div>
+           <div class="span2">
+              <p> About </p>
+              <p> Mission </p>
+              <p> Staff </p>
+              <p> Support </p>
+              <p> Membership </p>
+              <p> FAQs </p>
+              <p> Partners </p>
+              <p> contact </p>
+            </div>
+            <div class="span2">
+                <p> Classes and Workshops </p>
+                <p> Events </p>
+                <p> Faculty </p>
+            </div>
+            <div class="span2">
+                <p> Classes and Workshops </p>
+                <p> Events </p>
+                <p> Faculty </p>
+            </div>
+            <div class="span2">
+                <p> Media </p>
+                <p> Products </p>
+                <p> Faculty </p>
+            </div>
+            <div class="span2">
+                <p> Media </p>
+                <p> Products </p>
+                <p> Faculty </p>
+            </div>
+            </div>
+         </div>
+       </div>
+        
+   
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {{ 'jquery.js' | asset_url | script_tag }}
+    {{ 'bootstrap-dropdown.js' | asset_url | script_tag }}
+    {{ 'bootstrap-transition.js' | asset_url | script_tag }}
+    {{ 'bootstrap-carousel.js' | asset_url | script_tag }}
+    {{ 'main.js' | asset_url | script_tag }}
+    
+  
+
+</body></html>

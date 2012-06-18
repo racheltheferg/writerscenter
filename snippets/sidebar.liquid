@@ -1,0 +1,38 @@
+<div class="sidebar">
+  <div class="sidebar-element">
+    <h2><a href="/collections/all-classes-workshops">Be a Writer</a></h2>
+    <p>Whether you're a nervous beginner or an accomplished scribe, the IWC is here to help. Our <a href="/collections/all-classes-workshops"> classes and workshops</a> will get you on your way to being a writer (or a better writer) in no time.</p>
+    <br>
+  </div>
+  <div class="sidebar-element">
+    <h2><a href= "/membership">Be a Member</a></h2>
+    <p>Join our state-wide community of writers and enjoy exclusive benefits including member-only resources and class discounts.<a href= "/membership"> Learn more.</a></p>
+    <br>
+  </div>
+  <div class="sidebar-element">
+    <h2><a href="support">Support</a></h2>
+    <p>Your donations fund important programs throughout the state. <a href="support">Learn more</a> about how you can support our mission and help others find their voice.</p>
+    <br>
+  </div>
+  <div class="sidebar-element">
+    <h2><a href= "/volunteer">Volunteer</a></h2>
+    <p>The IWC s looking for program volunteers to assist with teaching, writing, and more. Learn more <a href= "/volunteer">here.</a> </p>
+    <br>
+  </div>
+  <div class="sidebar-element">
+    <h2><a href="/eblast">Connect</a></h2>
+    <p>Keep up with all the latest from the IWC through Facebook, Twitter and Flickr, or <a href="/eblast">sign up for our e-blast</a> to get updates directly in your inbox.</p>
+    <br>
+  </div>
+</div>
+
+ {%if settings.sm_facebook || settings.sm_twitter || settings.sm_youtube || settings.sm_flickr %}
+  <div id="sidebar-element">
+    <ul id="sm-icons" class="clearfix">
+      {%if settings.sm_youtube %}<li id="sm-youtube"><a href="{{settings.sm_youtube_link}}" class="ir">YouTube</a></li>{% endif %}
+      {%if settings.sm_flickr %}<li id="sm-flickr"><a href="{{settings.sm_flickr_link}}" class="ir">Flickr</a></li>{% endif %}
+      {%if settings.sm_twitter %}<li id="sm-twitter"><a href="{{settings.sm_twitter_link}}" class="ir">Twitter</a></li>{% endif %}
+      {%if settings.sm_facebook %}<li id="sm-facebook"><a href="{{settings.sm_facebook_link}}" class="ir">Facebook</a></li>{% endif %}
+    </ul>
+  </div>
+  {% endif %}
