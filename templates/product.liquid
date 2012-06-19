@@ -1,32 +1,34 @@
 <div id="col-main">
 
-  <div id="product" class="clearfix content">
+<div id="product" class="clearfix interior-content">
+  <div id="product-header" class="diagonal-divider clearfix">
+    <div id="product-header-title">
+      <h1 id="product-title">{{ product.title | escape }}</h1>
+      {% if settings.show_vendor %}<h2 id="product-vendor">{{ product.vendor | link_to_vendor }}</h2>{% endif %}
+    </div>
+  </div>
 
-    <div id="product-information">
+  <div class="description">
+    {{ product.description }}
+    {% include 'social-sharing' %} 
+  </div>
+  
+  <div>
+    {% if product.available %}
+    <form action="/cart/add" method="post" class="variants" id="product-actions">
+    <div class="options clearfix">  
 
-      <p id="add-to-cart-msg"></p>
-
-      <div id="product-header" class="diagonal-divider clearfix">
-
-        <div id="product-header-title">
-          <h1 id="product-title">{{ product.title | escape }}</h1>
-          {% if settings.show_vendor %}<h2 id="product-vendor">{{ product.vendor | link_to_vendor }}</h2>{% endif %}
-        </div>
-
-        {% if product.available %}
-          <form action="/cart/add" method="post" class="variants" id="product-actions">
-            <div class="options clearfix">  
-
-              <div class="variants-wrapper clearfix {% if product.variants.size == 1 %}visuallyhidden{% endif %}"> 
-                <select id="product-select" name="id">
-                  {% for variant in product.variants %}
-                  <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
-                  {% endfor %}
-                </select>
-              </div>            
-                
-              <div id="purchase">
-                <p class="price"></p>                                 
+    <div class="variants-wrapper clearfix {% if product.variants.size == 1 %}visuallyhidden{% endif %}"> 
+      <select id="product-select" name="id">
+        {% for variant in product.variants %}
+        <option value="{{ variant.id }}">{{ variant.title | escape }}</option>
+        {% endfor %}
+        </select>
+    </div>            
+  </div>     
+              
+  <div id="purchase">
+      <p class="price"></p>                                 
                 <input class="btn" type="submit" name="add" id="add-to-cart" value="Add to Cart" />
               </div>
 
@@ -41,59 +43,7 @@
           </div>      
         {% endif %}
       </div><!-- /#product-header -->
-
-      
-      <div class="description">
-        {{ product.description }}
-        {% include 'social-sharing' %} 
-      </div>            
-
-    </div><!-- /#product-information -->
-    
-    <div id="product-gallery">
-
-      <div>      
-        <img src="{{ product.featured_image | product_img_url: 'original' }}" alt="{{ product.title | escape }}" id="large-thumb" />
-      </div>
-
-      <ul id="thumbs" {% if product.images.size == 1 %}class="visuallyhidden"{% endif %}>
-        {% for image in product.images %}
-        <li>
-          <a class="gallery" href="{{ image | product_img_url: 'original' }}" title="{{ image.alt | escape }}">
             
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-      
-    </div><!-- /#product-gallery -->
 
-  </div><!-- /#product -->
-
-
-  {% if settings.productspg_featured_collection != empty %}
-
-    {% assign collection = collections[settings.productspg_featured_collection] %}
-    {% assign products   = collection.products %}
-
-    {% if products.size > 0 %}
-      <section class="diagonal-divider clearfix">
-
-        <header class="section-details clearfix">
-          <h1 class="section-title">{{ collection.title | link_to: collection.url }}</h1>
-        </header>    
-
-        <ul class="product-grid" id="secondary-grid">
-          {% for product in products limit: settings.productspg_featured_limit %}
-          <li class="{% cycle '', '', '', 'last-in-row' %}">
-            {% include 'product-grid-item' %}
-          </li>
-          {% endfor %}
-        </ul>      
-
-      </section>
-    {% endif %}
-
-  {% endif %}
 
 </div><!-- /#col-main -->
