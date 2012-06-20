@@ -26,18 +26,30 @@
     </div>
       
     <div class="container {% if template == 'index' %} main {% else %} interior {% endif %}">
-      <div class="uppernav">
-        <div class="uppernav-item">
-          <a href="/pages/contact">Contact.</a>
-          <a href="#">Cart.</a>
-        </div>
-        <div class="uppernav-item search">
-          <form action ="http://www.example.com/login.php">
-            <input type= "text" name="search" size="10" maxlength="100" />
-            <input type="image" src= "{{'icon-search.png' | asset_url }}" width= "25" height= "20">
-          </form>
-        </div>
-      </div>
+      
+            <div id="umbrella">
+              <ul>              
+                
+                <li class="contact">
+                  <a href="/pages/contact">Contact.</a>              
+                </li>
+
+                <li class="checkout-link">
+                  <a href="/cart">Cart.</a>              
+                </li>
+
+      {% if settings.show_header_search %}
+      <li>
+              <form id="header-search" action="/search" method="get">
+                <input type="text" id="top-search-input" name="q" class="search-input" value="" accesskey="4"  autocomplete="off" placeholder="Search" />
+                <input type="image" class= "search-icon" src= "{{'icon-search.png' | asset_url }}" id="top-search-submit" class="search-submit ir" value="Search" />
+              </form>
+              </li>
+              {% endif %}
+
+              </ul>
+            </div>
+            
       <div class="row">
         <div class="span3 logo">
           <a href="/"> <img src= "{{'logo.png' | asset_url }}"/> </a>
