@@ -1,13 +1,9 @@
 <div class="product-grid-item " id="product-{{ product.variants.first.id }}">
 
-  <a href="{{ product.url | within: collection }}" class="product-link" title="{{ product.featured_image.alt | escape }}">
- 
-    
-    <img src="{{ product.featured_image | product_img_url: 'medium' }}" class="product-photo" alt="{{ product.featured_image.alt | escape }}" />
+  <a href="{{ product.url | within: collection }}" class="product-link">
+  {{ product.title | escape}}
   </a>
-  
-  <div class="product-information">
-    <a href="{{ product.url | within: collection }}">{{ product.title | escape | truncate: 45 }}</a>                    
-  </div>    
+ {{ product.description | truncatewords: 50 }} <a href="{{ product.url }}">learn more or register</a>
+    
           
 </div>    

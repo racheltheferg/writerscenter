@@ -1,22 +1,27 @@
 <div id="col-main" class="{{ collection.handle }} interior-content">
 
+      <h1 class="collection-title">{{ collection.title | escape }}</h1>
+      {% if collection.description != empty %}
+        <div class="description content">{{ collection.description }}</div>
+      {% endif %}
+
+    {% paginate collection.products by 10 %}
+      {% if collection.products.size > 0 %}
+    
+        <ul class="product-grid clearfix">
+        {% for product in collection.products %}
+          <li{% cycle '', '', '', ' class="last-in-row"' %}>
+            {% include 'product-grid-item' %}
+          </li>
+        {% endfor %}
+        </ul>
+
+        {% include 'pagination' %}
+      
+      {% else %}    
+        <strong>No products found in this collection.</strong>
+      {% endif %}
+    {% endpaginate %}
+  </section>
   
-<div id="page-header">
-   <h1 class="section-title">{{ collection.title | escape }}</h1>
-   {% if collection.description != empty %}
-     <div class="description content">{{ collection.description }}</div>
-   {% endif %}
-</div>        
- 
-<div class="product-excerpt">
-   <h4>{{ product.title | link_to: product.url }}</h4>
-    {{ product.content | strip_html | truncatewords: 40 }}
-         </div>
-         
-         </div> <!-- end .product -->
-        
- 
- 
-  
- 
 </div> <!-- /#col-main -->

@@ -329,7 +329,7 @@ input, textarea, select, .uneditable-input {
 /*page footer*/
 
 
-.footer {
+#bottom {
   background-color: #313030;
   -moz-box-shadow: inset 0 0 15px #131313;
   -webkit-box-shadow: inset 0 0 15px #131313;
@@ -337,14 +337,20 @@ input, textarea, select, .uneditable-input {
   font: 13px;
   color: #969595;
   padding: 20px 0 40px 0;
-  margin: 0 0 0 0;
+  margin: 0;
 }
 
-.footer.span2 {
-  margin: 0px;
-  padding: 0px;
-  
+#footer-nav {
+  list-style: none;
 }
+
+#footer-nav a {
+  color: #aaa;
+  text-decoration: none;
+  float: left;
+  margin-right: 30px;
+}
+
 
 
 /*interior page content area*/
@@ -762,65 +768,49 @@ table img {
   .product-grid{
     list-style: none;
     margin: 0;
-    color: {{ settings.grid_text_colour }};
     }
-  .product-grid li{
-    width: 177px;
-    float: left;
-    margin: 0 10px 10px 0;
-    position: relative;
-    }
-  .product-grid .last-in-row{ margin-right: 0; } 
+    
 
-  .generated-height .product-grid-item{
-    width: 177px; 
+.generated-height .product-grid-item{
     position: absolute;
     bottom: 0;
     }
 
-  .product-grid img{ 
-    display: block; 
-    margin: 0 auto;
-    } 
 
-  .product-grid a{
-    text-decoration: none;
-    display: block;
-    color: {{ settings.grid_link_colour }};
-    }
-  .product-grid a:hover{
-    color: {{ settings.grid_link_hover_colour }};
-    }
-
-  .product-grid .product-link{
+.product-grid .product-link{
     display: block;
     position: relative;
     z-index: 1;
+    font-size: 19px;
+    font-weight: bold;
     text-decoration: none;
     margin: 0;
-    min-height: 50px;
+    padding: 25px 0 10px 0;
     /* for ie6: */
     width: 100%;
     }  
 
-  .product-photo{
-    max-width: 177px; 
-    }
-  .ie6 .product-grid{ overflow: hidden; }
+.collection-title {
+  padding-bottom: 20px;
+}
 
-  .product-information{
-    padding: 10px;
+.product-grid-item {
+  border-top: solid 1px {{ settings.content_secondary_colour }}; 
+  padding-bottom: 20px
+}
+
+.ie6 .product-grid{ overflow: hidden; }
+
+.product-information{
     position: relative;
-    background: {{ settings.grid_bg_colour }};   
-    -webkit-border-radius: 0 0 4px 4px;
-    -moz-border-radius: 0 0 4px 4px;
-    border-radius: 0 0 4px 4px; 
     }
-  .product-information h3{
+    
+.product-information h3{
     font: {{settings.home_featured_product_font_style}} {{settings.home_featured_product_font_size}}/1 {{settings.header_font}};
     margin: 5px 0 10px 0;
     }
-  .product-information p{
+    
+.product-information p{
     line-height: 1.4em;
     margin: 0 0 .75em 0;
     }

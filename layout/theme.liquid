@@ -107,49 +107,24 @@
         <p>© Indiana Writers Center 2012</p>
       </copywright>
 
-    </div> <!-- /container -->
+  </div> <!-- /container -->
  
-      <div class="footer">
-         <div class="container">
-           <div class="row">
-           <div class="span2">
-             <p> Contact </p>
-             <p> Cart </p>
-           </div>
-           <div class="span2">
-              <p> About </p>
-              <p> Mission </p>
-              <p> Support </p>
-              <p> Membership </p>
-              <p> InWords </p>
-              <p> Staff </p>
-              <p> Board of Directors </p>
-              <p> Partners </p>
-              <p> FAQs </p>
-              <p> contact </p>
-            </div>
-            <div class="span2">
-                <p> Blog </p>
-            </div>
-            <div class="span2">
-                <p> Classes and Events </p>
-                <p> Catalogue </p>
-                <p> Faculty </p>
-                <p> Events </p>
-                <p> Calendar </p>                
-            </div>
-            <div class="span2">
-                <p> Outreach </p>
-                <p> Volunteer </p>
-            </div>
-            <div class="span2">
-                <p> Resources</p>
-                <p> Media </p>
-                <p> Products </p>
-            </div>
-            </div>
-         </div>
-       </div>
+       
+  <!-- Footer -->
+        <footer id="bottom">
+
+          <div id="footer-left" class="container">
+            <ul id="footer-nav" class="clearfix">
+            {% for link in linklists.main-menu.links %}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+              <li class="list {% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
+                {% assign child_list_handle = link.title | handleize %}
+            {% endfor %}
+            </ul>
+          </div>
+
+        </footer> 
+      
         
    
 
