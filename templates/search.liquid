@@ -16,7 +16,7 @@
         <div class="item clearfix">          
   
           <div class="search-excerpt">
-            <h4>{{ item.title | link_to: item.url }}</h4>
+            <h4>{{ g.title | link_to: item.url }}</h4>
             {{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}
           </div>
           
