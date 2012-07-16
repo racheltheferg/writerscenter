@@ -1,14 +1,9 @@
 <div class="blog-feed">
   <h2>News & Updates</h2><p>
-    <h4>4.19.12</h4>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">Read more »</a></p><p><p><br>
-    <h4>4.19.12</h4>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">Read more »</a></p><p><p><br>
-    <h4>4.19.12</h4>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">Read more »</a></p><br>
+    {% for article in blogs['news-updates'].articles limit: 7 %}
+      <h4> <a href= "{{article.url}}"> {{ article.created_at | date: "%b %d" }} - {{ article.title }} </a></h4>
+      <p>{{ article.content | truncatewords: 50 }} <a href="{{ article.url }}">read more</a></p><br>
+    {% endfor %}   
 </div>
 
 

@@ -67,25 +67,24 @@ a:hover {
 
 
 /*upper navigation with search bar*/
+#umbrella {
+  position: relative;
+}
 
-#umbrella{
+#umbrella ul {
+  margin: 0;
   padding: 0 10px 0 12px;
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  list-style: none;
   font-size: 12px;
   font-weight: bold;
-  position: absolute;
-  top: 55px;
-  right: 180px;
   -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px; 
   color: {{ settings.cart_link_colour }};
-  }
-
-#umbrella ul{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  }
+}
   
 #umbrella li{
   float: left;
@@ -266,6 +265,11 @@ input, textarea, select, .uneditable-input {
 
 /*sidebars*/
 
+.sidebar-element h2 {
+  font: 26px 'BebasNeueRegular', Arial, sans-serif;
+  text-decoration: none;
+  color: #4e4e4e;
+}
 .sidebar-element h2 a {
   font: 26px 'BebasNeueRegular', Arial, sans-serif;
   text-decoration: none;
@@ -276,23 +280,27 @@ input, textarea, select, .uneditable-input {
   color: #a44316;
 }
 
+.sidebar-element h4 {
+  margin: 20px 0 10px 0;
+}
+
 .sidebar {
   padding: 15px 20px 0 0px;
 }
 
 .main .sidebar {
-  padding: 10px 20px 0 0px;
+  padding: 5px 20px 0 0px;
 }
 
 
 #sm-icons li { 
-  margin: 0 0 0 10px; 
+  margin: 0 10px 0 0; 
   padding: 0;
   float: left;
   }
   
-#sm-icons ul {
-  margin: 0 30px 0 -10px;
+#sm-icons {
+  margin: 0 30px 0 0;
 } 
 
 #sm-icons a{ 
@@ -411,9 +419,14 @@ table img {
   float: none;
   text-align: left;
   }
+  
+.description img {
+  float: left;
+  margin: 0 15px 15px 0;
+  }
+  
 #add-to-cart{
   margin: 8px 0 0 0;
-  background-color: #a44316;
   }
 
 #product-header{
@@ -654,7 +667,7 @@ table img {
 
       .comment-author{
         float: left;
-        width: 18.0%;
+        width: 20.0%;
         padding: 12px 0 0 0;
         font-weight: bold;
         text-align: right;
@@ -663,7 +676,7 @@ table img {
 
       .comment-content{
         background: {{ settings.comment_bg }};
-        float: right;
+        float: left;
         width: 75%;
         -moz-border-radius: 8px;
         -webkit-border-radius: 8px;
@@ -696,11 +709,11 @@ table img {
 
       .comment-form label{
         display: block;
-        width: 130px;
+        width: 90px;
         float: left;
         }
       .comment-form #comment-submit{
-        margin: 0 0 10px 130px;
+        margin: 0 0 10px 90px;
         }
       .comment-form div{
         margin: 0 0 10px 0;
@@ -717,6 +730,7 @@ table img {
         } 
       .comment-form textarea.text{
         width: 500px;
+        height: 100px;
         }
         
 
@@ -769,12 +783,6 @@ table img {
     list-style: none;
     margin: 0;
     }
-    
-
-.generated-height .product-grid-item{
-    position: absolute;
-    bottom: 0;
-    }
 
 
 .product-grid .product-link{
@@ -785,7 +793,7 @@ table img {
     font-weight: bold;
     text-decoration: none;
     margin: 0;
-    padding: 25px 0 10px 0;
+    padding: 25px 0 15px 0;
     /* for ie6: */
     width: 100%;
     }  
@@ -797,6 +805,12 @@ table img {
 .product-grid-item {
   border-top: solid 1px {{ settings.content_secondary_colour }}; 
   padding-bottom: 20px
+}
+
+.product-grid-item img {
+  width: 150px;
+  float: left;
+  margin: 5px 15px 3px 0;
 }
 
 .ie6 .product-grid{ overflow: hidden; }
@@ -824,8 +838,7 @@ table img {
     padding: 4px 8px;
     text-align: right;
     font-weight: bold;
-    color: {{ settings.grid_price_colour }};
-    opacity: .85; 
+    color: #999; 
     background: {{ settings.grid_price_background_colour }};
     -webkit-border-radius: 4px 0 0 0;
     -moz-border-radius: 4px 0 0 0;
