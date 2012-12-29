@@ -7,8 +7,13 @@
       {% if template == "index" %} {{ shop.name | escape }} {% else %} {{ page_title | escape }} &ndash; {{ shop.name | escape }} {% endif %}
     </title>
 
-    <meta name="description" content="">
-    <meta name="author" content="">
+    {% if template contains 'product' %}
+    <meta name="description" content="{{ product.description | strip_html | strip_newlines | truncate: maxmeta | escape }}" />
+    {% elsif template contains 'page' %}
+    <meta name="description" content="{{ page.content | strip_html | strip_newlines | truncate: maxmeta | escape }}" />
+    {% elsif template == 'index' and shop.description != '' %}
+    <meta name="description" content="{{ shop.description }}" />
+    {% endif %}
 
     <!-- Le styles -->
     {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
@@ -19,7 +24,7 @@
     {{content_for_header}}
   </head>
 
-  <body>
+  <body class="{% if customer %}customer-logged-in {% endif %}template{{ template | split: '.' | first | camelize }}">
     <div class="header"></div>
       
     <div class="container {% if template == 'index' %} main {% else %} interior {% endif %}">
@@ -126,6 +131,7 @@
   {{ 'bootstrap-dropdown.js' | asset_url | script_tag }}
   {{ 'bootstrap-transition.js' | asset_url | script_tag }}
   {{ 'bootstrap-carousel.js' | asset_url | script_tag }}
+  {{ 'modernizr.js' | asset_url | script_tag }}
   {{ 'main.js' | asset_url | script_tag }}
 
 </body>
