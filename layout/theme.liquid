@@ -6,18 +6,13 @@
     <title>
       {% if template == "index" %} {{ shop.name | escape }} {% else %} {{ page_title | escape }} &ndash; {{ shop.name | escape }} {% endif %}
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Le styles -->
     {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
     {{ 'main.css' | asset_url | stylesheet_tag }}
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
     {{ 'option_selection.js' | shopify_asset_url | script_tag }}
 
@@ -29,23 +24,23 @@
       
     <div class="container {% if template == 'index' %} main {% else %} interior {% endif %}">
       <div id="umbrella" class="clearfix">
-         <ul>                
-           <li class="contact">
-             <a href="/pages/contact">Contact.</a>              
-           </li>
-           <li class="checkout-link">
-             <a href="/cart">Cart.</a>              
-           </li>
-           {% if settings.show_header_search %}
-           <li>
-             <form id="header-search" action="/search" method="get">
-               <input type="text" id="top-search-input" name="q" class="search-input" value="" accesskey="4"  autocomplete="off" placeholder="Search" />
-               <input type="image" class= "search-icon" src= "{{'icon-search.png' | asset_url }}" id="top-search-submit" class="search-submit ir" value="Search" />
-             </form>
-           </li>
-           {% endif %}
-         </ul>
-       </div>
+        <ul>                
+         <li class="contact">
+           <a href="/pages/contact">Contact.</a>              
+         </li>
+         <li class="checkout-link">
+           <a href="/cart">Cart.</a>              
+         </li>
+         {% if settings.show_header_search %}
+         <li>
+           <form id="header-search" action="/search" method="get">
+             <input type="text" id="top-search-input" name="q" class="search-input" value="" accesskey="4"  autocomplete="off" placeholder="Search" />
+             <input type="image" class="search-icon" src= "{{'icon-search.png' | asset_url }}" id="top-search-submit"  value="Search" />
+           </form>
+         </li>
+         {% endif %}
+        </ul>
+      </div>
             
       <div class="row">
         <div class="span3 logo">
@@ -103,41 +98,35 @@
 
       <hr>
 
-      <copywrightr>
+      <copyright>
         <p>© Indiana Writers Center 2012</p>
-      </copywright>
-
+      </copyright>
   </div> <!-- /container -->
- 
        
   <!-- Footer -->
-        <footer id="bottom">
-
-          <div id="footer-left" class="container">
-            <ul id="footer-nav" class="clearfix">
-            {% for link in linklists.main-menu.links %}
-              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
-              <li class="list {% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
-                {% assign child_list_handle = link.title | handleize %}
-            {% endfor %}
-            </ul>
-          </div>
-
-        </footer> 
+  <footer id="bottom">
+    <div id="footer-left" class="container">
+      <ul id="footer-nav" class="clearfix">
+      {% for link in linklists.main-menu.links %}
+        <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+        <li class="list {% if forloop.first %}first{% elsif forloop.last %}last{%endif%}">
+          {% assign child_list_handle = link.title | handleize %}
+      {% endfor %}
+      </ul>
+    </div>
+  </footer>
       
         
    
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {{ 'jquery.js' | asset_url | script_tag }}
-    {{ 'bootstrap-dropdown.js' | asset_url | script_tag }}
-    {{ 'bootstrap-transition.js' | asset_url | script_tag }}
-    {{ 'bootstrap-carousel.js' | asset_url | script_tag }}
-    {{ 'main.js' | asset_url | script_tag }}
-    {{ 'radiance.js' | asset_url | script_tag }} 
-    
-  
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  {{ 'jquery.js' | asset_url | script_tag }}
+  {{ 'bootstrap-dropdown.js' | asset_url | script_tag }}
+  {{ 'bootstrap-transition.js' | asset_url | script_tag }}
+  {{ 'bootstrap-carousel.js' | asset_url | script_tag }}
+  {{ 'main.js' | asset_url | script_tag }}
 
-</body></html>
+</body>
+</html>
