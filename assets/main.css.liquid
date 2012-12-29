@@ -180,7 +180,7 @@ input, textarea, select, .uneditable-input {
 
 .iwcnav .dropdown {
   float: left;
-  margin-left: 68px;
+  margin-left:  9%; /* 68px; */
   margin-top: 126px;
 }
 
@@ -262,6 +262,23 @@ input, textarea, select, .uneditable-input {
 }
 
 
+/*newsfeed*/
+
+.blog-feed h2 {
+  font: 26px 'BebasNeueRegular', Arial, sans-serif;
+  text-decoration: none;
+  color: #4e4e4e;
+}
+
+.blog-feed h2 a {
+  font: 26px 'BebasNeueRegular', Arial, sans-serif;
+  text-decoration: none;
+  color: #4e4e4e;
+}
+
+.blog-feed h2 a:hover {
+  color: #a44316;
+}
 
 /*sidebars*/
 
@@ -397,10 +414,10 @@ table img {
   max-width: none;
 }
 
-[class*="span"]:first-child {
+/*[class*="span"]:first-child {
   margin-left: 10px;
 }
-
+*/
 /** 
  * Single Product 
  */ 
@@ -813,37 +830,37 @@ table img {
   margin: 5px 15px 3px 0;
 }
 
-.ie6 .product-grid{ overflow: hidden; }
+.ie6 .product-grid { overflow: hidden; }
 
 .product-information{
-    position: relative;
-    }
+  position: relative;
+}
     
 .product-information h3{
-    font: {{settings.home_featured_product_font_style}} {{settings.home_featured_product_font_size}}/1 {{settings.header_font}};
-    margin: 5px 0 10px 0;
-    }
+  font: {{settings.home_featured_product_font_style}} {{settings.home_featured_product_font_size}}/1 {{settings.header_font}};
+  margin: 5px 0 10px 0;
+}
     
 .product-information p{
-    line-height: 1.4em;
-    margin: 0 0 .75em 0;
-    }
+  line-height: 1.4em;
+  margin: 0 0 .75em 0;
+}
 
-  .product-price{
-    display: block;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: auto;
-    padding: 4px 8px;
-    text-align: right;
-    font-weight: bold;
-    color: #999; 
-    background: {{ settings.grid_price_background_colour }};
-    -webkit-border-radius: 4px 0 0 0;
-    -moz-border-radius: 4px 0 0 0;
-    border-radius: 4px 0 0 0; 
-    }
+.product-price {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  padding: 4px 8px;
+  text-align: right;
+  font-weight: bold;
+  color: #999; 
+  background: {{ settings.grid_price_background_colour }};
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0; 
+}
 
 
 

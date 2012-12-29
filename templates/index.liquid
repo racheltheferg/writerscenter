@@ -1,5 +1,5 @@
 <div class="blog-feed">
-  <h2>News & Updates</h2><p>
+  <h2><a href="/blogs/news-updates">News & Updates</a></h2><p>
     {% for article in blogs['news-updates'].articles limit: 7 %}
       <h4> <a href= "{{article.url}}"> {{ article.created_at | date: "%b %d" }} - {{ article.title }} </a></h4>
       <p>{{ article.content | truncatewords: 50 }} <a href="{{ article.url }}">read more</a></p><br>
