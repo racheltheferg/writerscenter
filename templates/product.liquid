@@ -29,10 +29,17 @@
               <option value="{{ variant.id }}">{{ variant.title | escape }} - {{ variant.price | money }}</option> 
               {% endfor %}
             </select>
-          </div>      
+          </div>
+          {% if product.handle == 'donate-to-the-iwc' %}
+            <div class="clearfix donate">
+              <p>
+                I'd like to donate $<input name="quantity" type="text" value="50" size="5"/> to Indiana Writers Center. 
+              </p>
+            </div>
+          {% endif %}
     
           <div id="purchase">
-            <p class="price"></p>                                
+            <p class="price {% if product.handle == 'donate-to-the-iwc' %}visuallyhidden{% endif %}"></p>                                
              <input class="btn" type="submit" name="add" id="add-to-cart" value="Add to Cart" />
           </div>
         </div>   
