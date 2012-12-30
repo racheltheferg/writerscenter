@@ -63,6 +63,7 @@ var WRITERS = {
       console.info(' > Product Template');
       $('#add-to-cart').bind( 'click', addToCart );
       $('#thumbs li:nth-child(5n+5)').addClass('last-in-row');
+      membershipRadios();
     }
   }, 
 
@@ -88,7 +89,7 @@ function addToCart(e){
   if (typeof e !== 'undefined') e.preventDefault();
   
   var id        = $(this).parents('form').find('[name="id"]').val();
-  var quantity  = $(this).parents('form').find('[name="quantity"]').val() || 1;
+  var quantity  = Math.floor(Number($(this).parents('form').find('[name="quantity"]').val())) || 1;
 
   $.ajax({ 
     type: 'POST',
@@ -171,6 +172,26 @@ function searchPlaceholder(){
     });
   }
 
+}
+
+function membershipRadios() {
+  $('.donation-selector .donate').hide();
+  $('.donation-selector input:radio').change(function(e) {
+    var currentValue = e.currentTarget.value;
+    
+    if(currentValue == 'other') {
+      $(".donation-selector .donate").show();
+      $("#donation-quantity").val("1");
+    } else {
+      $(".donation-selector .donate").hide();
+      $("#product-quantity").val(currentValue);
+    }
+    
+  });
+  
+  $('#donation-quantity').change(function(e) {
+    $("#product-quantity").val(e.currentTarget.value);
+  });
 }
 
 

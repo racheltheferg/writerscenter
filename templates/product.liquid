@@ -16,6 +16,39 @@
         </a>
       {% endif %}
       {{ product.description }}
+      {% if product.handle == 'donate-to-the-iwc' %}
+        <ul class="donation-selector">
+          <li>
+            <input type="radio" name="donation-selector" id="donate-10" value="10">
+            <label for="donate-10">Donate $10</label>
+          </li>
+          <li>
+            <input type="radio" name="donation-selector" id="donate-25" value="25">
+            <label for="donate-25">Donate $25</label>
+          </li>
+          <li>
+            <input type="radio" name="donation-selector" id="donate-50" value="50">
+            <label for="donate-50">Donate $50</label>
+          </li>
+          <li>
+            <input type="radio" name="donation-selector" id="donate-100" value="100">
+            <label for="donate-100">Donate $100</label>
+          </li>
+          <li>
+            <input type="radio" name="donation-selector" id="donate-500" value="500">
+            <label for="donate-500">Donate $500</label>
+          </li>
+          <li>
+            <input type="radio" name="donation-selector" id="donate-other" value="other">
+            <label for="donate-other">Donate other amount</label>
+          </li>
+          <li class="donate">
+            <p>
+              I'd like to donate $<input id="donation-quantity" type="text" size="5"/> to Indiana Writers Center. 
+            </p>
+          </li>
+        </ul>
+      {% endif %}
       {% include 'social-sharing' %}        
     </div>
 
@@ -31,11 +64,7 @@
             </select>
           </div>
           {% if product.handle == 'donate-to-the-iwc' %}
-            <div class="clearfix donate">
-              <p>
-                I'd like to donate $<input name="quantity" type="text" value="50" size="5"/> to Indiana Writers Center. 
-              </p>
-            </div>
+          <input name="quantity" id="product-quantity" class="visuallyhidden" type="text" size="5"/>
           {% endif %}
     
           <div id="purchase">
